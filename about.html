@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+    <title>品牌故事</title>
+
+    <style>
+        * {
+            /*border: solid 1px black;*/
+            box-sizing: border-box;
+            font-family: 微軟正黑體;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            background-color: #d8d7d1;
+
+        }
+
+
+    /* navbar */
+
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+
+    nav {
+        position: relative;
+        background-color: #003C50;
+        padding-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .logo {
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+
+    .logo img {
+        height: 90px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .menu {
+        /* 分散對齊 */
+        justify-content: space-between;
+        display: flex;
+    }
+
+    .menu>li {
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .menu>li>a {
+        font-weight: bolder;
+        font-size: 28px;
+        color: #B7925A;
+    }
+
+    .sub-menu {
+        display: none;
+        position: absolute;
+        background-color: #003C50;
+        top: 55px;
+        left: 50%;
+        /* 死都不換行 */
+        white-space: nowrap;
+        transform: translateX(-50%);
+        /* 配合position: absolute/fixed使用。數字愈大,圖層愈前面 */
+        z-index: 9999;
+    }
+
+    .sub-menu>li {
+        padding: 10px 30px;
+        text-align: center;
+    }
+
+    .sub-menu>li>a {
+        font-size: 24px;
+        color: #B7925A;
+    }
+
+    .menu>li:hover>a {
+        color: #fff;
+    }
+
+    .menu>li:nth-last-child(3)>a {
+        letter-spacing: 10px;
+        margin-left: 10px;
+    }
+
+    ul.sub-menu>li:hover {
+        background-color: #B7925A;
+    }
+
+    ul.sub-menu>li:hover a {
+        color: #fff;
+    }
+
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link.active {
+        border: none;
+        color: #B7925A;
+        background-color: transparent;
+    }
+
+    .nav-tabs {
+        border-bottom: none;
+    }
+
+    .nav-tabs .nav-link:focus,
+    .nav-tabs .nav-link:hover {
+        border: solid 1px transparent;
+        color: #fff;
+        text-shadow: 5px 5px 5px rgba(88, 77, 54, 0.5);
+    }
+
+
+        .img-fluid {
+            max-width: 90%;
+        }
+
+        .footer {
+            background-color: #003c50;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 5px;
+        }
+
+        .footer_txt {
+            font-size: 10px;
+            color: #b7925a;
+            margin-left: 38%;
+            letter-spacing: 2px;
+        }
+
+        .content-About {
+            margin-top: 25px;
+        }
+
+    @media screen and (max-width: 576px) {
+        /*當頁面寬度在576px以下則會改變排列方式*/
+        .logo img {
+            height: 60px;
+        }
+        .menu {
+            position: absolute;
+            display: block;
+            width: 100%;
+            top: 75px;
+            left: -100%;
+            background-color: rgba(0, 60, 80, 0.9);
+            z-index: 999;
+            text-align: center;
+            height: calc(100vh - 65px);
+            transition: 0.8s;
+        }
+        ul.menu li:hover::after {
+            opacity: 0;
+        }
+        .sub-menu {
+            display: none;
+            position: static;
+            transform: translate(0);
+        }
+        .mobile-toggle {
+            position: absolute;
+            width: 30px;
+            height: 16px;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .mobile-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #b7925a;
+        }
+        .mobile-toggle>span:nth-of-type(1) {
+            position: absolute;
+            top: 0;
+            transition: 0.8s;
+        }
+        .mobile-toggle>span:nth-of-type(2) {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: 0.8s;
+        }
+        .mobile-toggle>span:nth-of-type(3) {
+            position: absolute;
+            bottom: 0;
+            transition: 0.8s;
+        }
+        .mobile-toggle.open>span:nth-of-type(1) {
+            top: 50%;
+            transform: rotate(45deg) translateY(-50%);
+            transition: 0.8s;
+        }
+        .mobile-toggle.open>span:nth-of-type(2) {
+            opacity: 0;
+            transition: 0.8s;
+        }
+        .mobile-toggle.open>span:nth-of-type(3) {
+            top: 50%;
+            transform: rotate(-45deg) translateY(-50%);
+            transition: 0.8s;
+        }
+    }
+
+        @media (min-width: 1800px) {
+            .modal-lg {
+                max-width: 1600px;
+            }
+        }
+
+        @media (min-width: 1300px) {
+            .modal-lg {
+                max-width: 1200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="logo">
+            <img src="img/kebuke08.jpg" alt="">
+        </div>
+        <div class="container">
+            <ul class="menu">
+                <li>
+                    <a href="/index.html">最新消息</a>
+                </li>
+                <li>
+                    <a href="/about.html">品牌故事</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModalCenter">MENU</a>
+                </li>
+                <li>
+                    <a href="/store.html">門市據點</a>
+                </li>
+                <li>
+                    <a href="/contactus.html">聯絡我們</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-About">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="aboutpic">
+                        <img class="img-fluid" src="img/about.jpg" alt="about">
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="aboutp">
+                        <img class="img-fluid" width="641" src="img/about-02.jpg" alt="about">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer_txt">© 2008 Kebuke All Rights Reserved.</div>
+    </div>
+
+
+    <!-- 互動視窗 -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img data-dismiss="modal" class="w-100" src="img/kebuke-menu.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(".menu>li").hover(function () {
+            $(this).find(".sub-menu").slideDown(500);
+        }, function () {
+            $(this).find(".sub-menu").slideUp(500);
+        });
+    </script>
+     <!-- 手機版漢堡條開關 -->
+     <script>
+            $(".mobile-toggle").click(function () {
+                $(this).toggleClass("open");
+                if ($(this).hasClass("open")) {
+                    $(".menu").css("left", "0");
+                } else {
+                    $(".menu").css("left", "-100%");
+                    $(".sub-menu").slideUp(500);
+                }
+            });
+        </script>
+    
+        <!-- 手機版漢堡條折疊式選單 -->
+        <script>
+            function hovercheck() {
+                $(".menu>li").hover(function () {
+                    $(this).find(".sub-menu").slideDown(500);
+                }, function () {
+                    $(this).find(".sub-menu").slideUp(500);
+                });
+            }
+            var window_w = $(window).width();
+            if (window_w > 576) {
+                //console.log("大於1000")
+    
+                $(".menu>li").bind('mouseenter mouseleave', hovercheck);
+    
+            } else {
+                $(".menu>li").unbind('mouseenter mouseleave');
+                $(".menu>li").click(function () {
+                    if ($(this).hasClass("active")) {
+                        $(".sub-menu").slideUp(500);
+                        $(this).removeClass("active");
+                    } else {
+                        $(".sub-menu").slideUp(500);
+                        $(".sub-menu").removeClass("active");
+                        $(this).addClass("active");
+                        $(this).find(".sub-menu").slideDown(500);
+                    }
+                });
+            }
+            $(window).resize(function () {
+                function hovercheck() {
+                    $(".menu>li").hover(function () {
+                        $(this).find(".sub-menu").slideDown(500);
+                    }, function () {
+                        $(this).find(".sub-menu").slideUp(500);
+                    });
+                }
+                var window_w = $(window).width();
+                if (window_w > 576) {
+                    //console.log("大於1000")
+    
+                    $(".menu>li").bind('mouseenter mouseleave', hovercheck);
+    
+                } else {
+                    $(".menu>li").unbind('mouseenter mouseleave');
+                    $(".menu>li").click(function () {
+                        $(".sub-menu").slideUp(500);
+                        $(this).find(".sub-menu").slideDown(500);
+                    });
+                }
+            });
+        </script>
+
+</body>
+
+</html>

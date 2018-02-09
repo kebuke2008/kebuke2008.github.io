@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+    <title>聯絡我們</title>
+
+    <style>
+        * {
+            /*border: solid 1px black;*/
+            box-sizing: border-box;
+            font-family: 微軟正黑體;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            background-color: #d8d7d1;
+
+        }
+
+    /* navbar */
+
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+
+    nav {
+        position: relative;
+        background-color: #003C50;
+        padding-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .logo {
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+
+    .logo img {
+        height: 90px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .menu {
+        /* 分散對齊 */
+        justify-content: space-between;
+        display: flex;
+    }
+
+    .menu>li {
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .menu>li>a {
+        font-weight: bolder;
+        font-size: 28px;
+        color: #B7925A;
+    }
+
+    .sub-menu {
+        display: none;
+        position: absolute;
+        background-color: #003C50;
+        top: 55px;
+        left: 50%;
+        /* 死都不換行 */
+        white-space: nowrap;
+        transform: translateX(-50%);
+        /* 配合position: absolute/fixed使用。數字愈大,圖層愈前面 */
+        z-index: 9999;
+    }
+
+    .sub-menu>li {
+        padding: 10px 30px;
+        text-align: center;
+    }
+
+    .sub-menu>li>a {
+        font-size: 24px;
+        color: #B7925A;
+    }
+
+    .menu>li:hover>a {
+        color: #fff;
+    }
+
+    .menu>li:nth-last-child(3)>a {
+        letter-spacing: 10px;
+        margin-left: 10px;
+    }
+
+    ul.sub-menu>li:hover {
+        background-color: #B7925A;
+    }
+
+    ul.sub-menu>li:hover a {
+        color: #fff;
+    }
+
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link.active {
+        border: none;
+        color: #B7925A;
+        background-color: transparent;
+    }
+
+    .nav-tabs {
+        border-bottom: none;
+    }
+
+    .nav-tabs .nav-link:focus,
+    .nav-tabs .nav-link:hover {
+        border: solid 1px transparent;
+        color: #fff;
+        text-shadow: 5px 5px 5px rgba(88, 77, 54, 0.5);
+    }
+
+
+        .content-Contactus {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .content-Contactus-title {
+            width: 100%;
+            text-align: center;
+        }
+
+        .content-Contactus-subtitle {
+            width: 100%;
+            text-align: center;
+        }
+
+        .Contactus-img {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .Contactus-img02 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        
+        .content-Contactus ul li {
+            font-size: 24px;
+
+        }
+
+        a {
+            color: rgb(183, 146, 90);
+        }
+
+        a:hover {
+            color: rgb(255, 255, 255);
+        }
+
+        .ig-iframe iframe {
+            width: 100% !important;
+        }
+
+        .fb-iframe {
+            margin-bottom: 30px;
+        }
+
+        .ig-iframe {
+            margin-bottom: 30px;
+        }
+
+        .footer {
+            background-color: #003c50;
+            bottom: 0;
+            width: 100%;
+            padding: 5px;
+        }
+
+        .footer_txt {
+            font-size: 10px;
+            color: #b7925a;
+            margin-left: 38%;
+            letter-spacing: 2px;
+        }
+
+        @media screen and (max-width:767px) {
+            .content-Contactus {
+                width: 100%;
+            }
+
+            .Contactus1,
+            .Contactus2 {
+                display: inline-block;
+                font-size: 20px;
+            }
+            .Contactus-img,
+            .Contactus-img02,
+            .fb {
+                width: 100%;
+            }
+
+        }
+
+        @media screen and (max-width: 576px) {
+        /*當頁面寬度在576px以下則會改變排列方式*/
+        .logo img {
+            height: 60px;
+        }
+        .menu {
+            position: absolute;
+            display: block;
+            width: 100%;
+            top: 75px;
+            left: -100%;
+            background-color: rgba(0, 60, 80, 0.9);
+            z-index: 999;
+            text-align: center;
+            height: calc(100vh - 65px);
+            transition: 0.8s;
+        }
+        ul.menu li:hover::after {
+            opacity: 0;
+        }
+        .sub-menu {
+            display: none;
+            position: static;
+            transform: translate(0);
+        }
+        .mobile-toggle {
+            position: absolute;
+            width: 30px;
+            height: 16px;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .mobile-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #b7925a;
+        }
+        .mobile-toggle>span:nth-of-type(1) {
+            position: absolute;
+            top: 0;
+            transition: 0.8s;
+        }
+        .mobile-toggle>span:nth-of-type(2) {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: 0.8s;
+        }
+        .mobile-toggle>span:nth-of-type(3) {
+            position: absolute;
+            bottom: 0;
+            transition: 0.8s;
+        }
+        .mobile-toggle.open>span:nth-of-type(1) {
+            top: 50%;
+            transform: rotate(45deg) translateY(-50%);
+            transition: 0.8s;
+        }
+        .mobile-toggle.open>span:nth-of-type(2) {
+            opacity: 0;
+            transition: 0.8s;
+        }
+        .mobile-toggle.open>span:nth-of-type(3) {
+            top: 50%;
+            transform: rotate(-45deg) translateY(-50%);
+            transition: 0.8s;
+        }
+    }
+
+        @media (min-width: 1800px) {
+            .modal-lg {
+                max-width: 1600px;
+            }
+        }
+
+        @media (min-width: 1300px) {
+            .modal-lg {
+                max-width: 1200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="logo">
+            <img src="img/kebuke08.jpg" alt="">
+        </div>
+        <div class="container">
+            <ul class="menu">
+                <li>
+                    <a href="/index.html">最新消息</a>
+                </li>
+                <li>
+                    <a href="/about.html">品牌故事</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModalCenter">MENU</a>
+                </li>
+                <li>
+                    <a href="/store.html">門市據點</a>
+                </li>
+                <li>
+                    <a href="/contactus.html">聯絡我們</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-Contactus">
+
+        <div class="container col-md-8 col-md-offset-2">
+            <div class="content-Contactus-title" style="color: rgb(183,146,90)">
+                <h1>聯絡我們</h1>
+            </div>
+            <div class="content-Contactus-subtitle">
+                <img class="Contactus-img" width="415" src="img/contact-03.png" alt="Contactus">
+            </div>
+
+
+            <ul class="nav nav-tabs justify-content-around" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="Contactus-tab" data-toggle="tab" href="#Contactus" role="tab" aria-controls="Contactus" aria-selected="true">加入我們</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="Fanpage-tab" data-toggle="tab" href="#Fanpage" role="tab" aria-controls="Fanpage" aria-selected="false">粉絲專頁</a>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="Contactus" role="tabpanel" aria-labelledby="Contactus-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfitQVLkCgzhsnEWALpuRpudlsmWUWtP4Hq3w8RWOsAtCOsJg/viewform" target="_blank">
+                                <img class="Contactus-img" width="415" src="img/Contactus.jpg" alt="Contactus">
+                            </a>
+
+                        </div>
+                        <div class="col-md-6">
+
+                            <a href="https://www.1111.com.tw/job-bank/job-index.asp?si=1&ks=%E5%8F%AF%E4%B8%8D%E5%8F%AF%E7%86%9F%E6%88%90%E7%B4%85%E8%8C%B6&fs=1"
+                                target="_blank">
+                                <img class="Contactus-img02" width="415" src="img/Contactus-02.jpg" alt="Contactus02">
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="Fanpage" role="tabpanel" aria-labelledby="Fanpage-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="fb-iframe">
+                                <iframe class="fb" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fkebuke2008%2F&tabs=timeline&width=405&height=563&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                                    width="405" height="563" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                                    allowTransparency="true"></iframe>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ig-iframe">
+                                <!-- InstaWidget -->
+                                <a href="https://instawidget.net/v/user/kebuke2008" id="link-7531ca1c3086e2b469f4469bd7e1fc9839ae8af47b5a734bbcb13e55c16b0c5b">@kebuke2008</a>
+                                <script src="https://instawidget.net/js/instawidget.js?u=7531ca1c3086e2b469f4469bd7e1fc9839ae8af47b5a734bbcb13e55c16b0c5b&width=415px"></script>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer_txt">© 2008 Kebuke All Rights Reserved.</div>
+    </div>
+
+ 
+    <!-- 互動視窗 -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img data-dismiss="modal" class="w-100" src="img/kebuke-menu.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+ <!-- 手機版漢堡條開關 -->
+ <script>
+        $(".mobile-toggle").click(function () {
+            $(this).toggleClass("open");
+            if ($(this).hasClass("open")) {
+                $(".menu").css("left", "0");
+            } else {
+                $(".menu").css("left", "-100%");
+                $(".sub-menu").slideUp(500);
+            }
+        });
+    </script>
+
+    <!-- 手機版漢堡條折疊式選單 -->
+    <script>
+        function hovercheck() {
+            $(".menu>li").hover(function () {
+                $(this).find(".sub-menu").slideDown(500);
+            }, function () {
+                $(this).find(".sub-menu").slideUp(500);
+            });
+        }
+        var window_w = $(window).width();
+        if (window_w > 576) {
+            //console.log("大於1000")
+
+            $(".menu>li").bind('mouseenter mouseleave', hovercheck);
+
+        } else {
+            $(".menu>li").unbind('mouseenter mouseleave');
+            $(".menu>li").click(function () {
+                if ($(this).hasClass("active")) {
+                    $(".sub-menu").slideUp(500);
+                    $(this).removeClass("active");
+                } else {
+                    $(".sub-menu").slideUp(500);
+                    $(".sub-menu").removeClass("active");
+                    $(this).addClass("active");
+                    $(this).find(".sub-menu").slideDown(500);
+                }
+            });
+        }
+        $(window).resize(function () {
+            function hovercheck() {
+                $(".menu>li").hover(function () {
+                    $(this).find(".sub-menu").slideDown(500);
+                }, function () {
+                    $(this).find(".sub-menu").slideUp(500);
+                });
+            }
+            var window_w = $(window).width();
+            if (window_w > 576) {
+                //console.log("大於1000")
+
+                $(".menu>li").bind('mouseenter mouseleave', hovercheck);
+
+            } else {
+                $(".menu>li").unbind('mouseenter mouseleave');
+                $(".menu>li").click(function () {
+                    $(".sub-menu").slideUp(500);
+                    $(this).find(".sub-menu").slideDown(500);
+                });
+            }
+        });
+    </script>
+
+    <script>
+        $(".menu>li").hover(function () {
+            $(this).find(".sub-menu").slideDown(500);
+        }, function () {
+            $(this).find(".sub-menu").slideUp(500);
+        });
+    </script>
+
+</body>
+
+</html>

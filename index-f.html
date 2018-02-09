@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" initial-scale="1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body{
+            margin:0;
+            overflow-x:hidden; 
+        }
+        .wrap{
+            position: relative;
+            background-color: #D8D7D1;
+            width: 100%;
+            height: 100vh;
+        }
+        .logo{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            z-index: 9999;
+            opacity: 0;
+            animation: fadeIn 1s linear 2s forwards;
+        }
+        @keyframes fadeIn{
+            0%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+        .stripe{
+            height:12.5vh;
+            width:100%;
+            background-color: #003C50;
+            animation: slide 2s linear forwards;
+        }
+        .stripe:nth-child(odd){
+            transform: translateX(-100%);
+        }
+        .stripe:nth-child(even){
+            transform: translateX(100%);
+        }
+        @keyframes slide{
+            to{
+                transform: translate(0)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="logo">
+            <img src="img/logo.jpg" alt="">
+        </div>
+        <div class="stripe"></div>
+        <div class="stripe"></div>
+        <div class="stripe"></div>
+        <div class="stripe"></div>
+        <div class="stripe"></div>
+        <div class="stripe"></div>
+        <div class="stripe"></div>
+        <div class="stripe"></div>
+    </div>
+
+</body>
+</html>

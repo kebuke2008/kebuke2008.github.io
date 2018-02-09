@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>門市據點</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <style>
+        body {
+            background: #fff;
+            font-family: "cwTeXFangSong", serif, Helvetica, Arial, sans-serif, "微軟正黑體", Heiti TC, "メイリオ";
+            font-size: 14px;
+            background-color: #d8d7d1;
+        }
+
+        /* navbar */
+
+        a,
+        a:hover,
+        a:focus,
+        a:active {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 0;
+            padding-left: 0;
+        }
+
+        nav {
+            position: relative;
+            background-color: #003C50;
+            padding-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .logo {
+            margin: 0 auto;
+            margin-bottom: 10px;
+        }
+
+        .logo img {
+            height: 90px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .menu {
+            /* 分散對齊 */
+            justify-content: space-between;
+            display: flex;
+        }
+
+        .menu>li {
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .menu>li>a {
+            font-weight: bolder;
+            font-size: 28px;
+            color: #B7925A;
+        }
+
+        .menu>li:hover>a {
+            color: #fff;
+        }
+
+        .menu>li:nth-last-child(3)>a {
+            letter-spacing: 10px;
+            margin-left: 10px;
+        }
+
+
+        .nav-tabs .nav-item.show .nav-link,
+        .nav-tabs .nav-link.active {
+            border: none;
+            color: #B7925A;
+            background-color: transparent;
+        }
+
+        .nav-tabs {
+            border-bottom: none;
+        }
+
+        .nav-tabs .nav-link:focus,
+        .nav-tabs .nav-link:hover {
+            border: solid 1px transparent;
+            color: #fff;
+            text-shadow: 5px 5px 5px rgba(88, 77, 54, 0.5);
+        }
+
+        /* 內頁 */
+
+        #content4 {
+            max-width: 1000px;
+            min-height: calc(100vh - 229px);
+            margin: auto;
+        }
+
+        a {
+            color: #003750;
+            text-decoration: none;
+            background-color: transparent;
+            -webkit-text-decoration-skip: objects;
+        }
+
+        .nav-tabs .nav-item.show .nav-link,
+        .nav-tabs .nav-link.active.nav-link {
+            color: #003750;
+            background-color: #d8d7d1;
+            border-color: #c7b299 #c7b299 transparent;
+        }
+
+        .nav-tabs {
+            border-bottom: 2px solid#c7b299;
+        }
+
+        .nav-tabs .nav-item {
+            margin-bottom: -2px;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #c7b299;
+        }
+
+        .table {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 1rem;
+            background-color: transparent;
+            font-weight: bold;
+        }
+
+        .table td,
+        .table th {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        td,
+        th {
+            display: table-cell;
+            vertical-align: inherit;
+        }
+
+        .footer {
+            background-color: #003c50;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            padding: 5px;
+        }
+
+        .footer_txt {
+            font-size: 10px;
+            color: #b7925a;
+            margin-left: 38%;
+            letter-spacing: 2px;
+        }
+
+        
+        @media screen and (max-width: 576px) {
+        /*當頁面寬度在576px以下則會改變排列方式*/
+        .logo img {
+            height: 60px;
+        }
+        .menu {
+            position: absolute;
+            display: block;
+            width: 100%;
+            top: 75px;
+            left: -100%;
+            background-color: rgba(0, 60, 80, 0.9);
+            z-index: 999;
+            text-align: center;
+            height: calc(100vh - 65px);
+            transition: 0.8s;
+        }
+        ul.menu li:hover::after {
+            opacity: 0;
+        }
+        .sub-menu {
+            display: none;
+            position: static;
+            transform: translate(0);
+        }
+        .mobile-toggle {
+            position: absolute;
+            width: 30px;
+            height: 16px;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .mobile-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #b7925a;
+        }
+        .mobile-toggle>span:nth-of-type(1) {
+            position: absolute;
+            top: 0;
+            transition: 0.8s;
+        }
+        .mobile-toggle>span:nth-of-type(2) {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: 0.8s;
+        }
+        .mobile-toggle>span:nth-of-type(3) {
+            position: absolute;
+            bottom: 0;
+            transition: 0.8s;
+        }
+        .mobile-toggle.open>span:nth-of-type(1) {
+            top: 50%;
+            transform: rotate(45deg) translateY(-50%);
+            transition: 0.8s;
+        }
+        .mobile-toggle.open>span:nth-of-type(2) {
+            opacity: 0;
+            transition: 0.8s;
+        }
+        .mobile-toggle.open>span:nth-of-type(3) {
+            top: 50%;
+            transform: rotate(-45deg) translateY(-50%);
+            transition: 0.8s;
+        }
+    }
+
+        @media (min-width: 1800px) {
+            .modal-lg {
+                max-width: 1600px;
+            }
+        }
+
+        @media (min-width: 1300px) {
+            .modal-lg {
+                max-width: 1200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="logo">
+            <img src="img/kebuke08.jpg" alt="">
+        </div>
+        <div id="pc_navbar" class="container">
+            <ul class="menu">
+                <li>
+                    <a href="/index.html">最新消息</a>
+                </li>
+                <li>
+                    <a href="/about.html">品牌故事</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModalCenter">MENU</a>
+                </li>
+                <li>
+                    <a href="/store.html">門市據點</a>
+                </li>
+                <li>
+                    <a href="/contactus.html">聯絡我們</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="content4">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">北部</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">中部</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">南部</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="footer-tab" data-toggle="tab" href="#footer" role="tab" aria-controls="footer" aria-selected="false">即將開幕</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <table class="table table-striped">
+                    <tr class="table-color">
+                        <th scope="row">
+                            <a href="map:台北大安店">台北大安店</a>
+                        </th>
+                        <th scope="col">
+                            <a href="tel: 02-27775252">02-2777-5252</a>
+                        </th>
+                        <th scope="col" class="d-none d-sm-block">
+                            <a href="https://goo.gl/kE8yuZ">台北市大安區大安路一段22號</a>
+                        </th>
+                        <th scope="col">
+                            <a href="https://goo.gl/kE8yuZ" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:板橋陽明店">板橋陽明店</a>
+                        </th>
+                        <td>
+                            <a href="tel:02-22500399">02-2250-0399</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/G8qHBH">新北市板橋區陽明街72號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/G8qHBH" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="table-color">
+                        <th scope="row">
+                            <a href="map:新竹金山店">新竹金山店</a>
+                        </th>
+                        <td>
+                            <a href="tel:03-5630303">03-5630-303</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/efZKS4">新竹市東區金山街20號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/efZKS4" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:桃園新屋店">桃園新屋店</a>
+                        </th>
+                        <td>
+                            <a href="tel:03-4779626">03-4779-626</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/BjmKRo">桃園市新屋區中山路330號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/BjmKRo" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <table class="table table-striped">
+                    <tr class="table-color">
+                        <th scope="row">
+                            <a href="map:潭子圓通南店">潭子圓通南店</a>
+                        </th>
+                        <th scope="col">
+                            <a href="tel: 04-2535-0018">04-2535-0018</a>
+                        </th>
+                        <th scope="col" class="d-none d-sm-block">
+                            <a href="https://goo.gl/tsEfWE">台中市潭子區圓通南路279號</a>
+                        </th>
+                        <th scope="col">
+                            <a href="https://goo.gl/tsEfWE" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:霧峰中正店">霧峰中正店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-2339-6155">04-2339-6155</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/Ruo7rU">台中市霧峰區中正路899號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/Ruo7rU" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="table-color">
+                        <th scope="row">
+                            <a href="map:大甲順天店">大甲順天店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-2688-7553">04-2688-7553</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/XVwjL2">台中市大甲區順天路197號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/XVwjL2" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:北屯崇德店">北屯崇德店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-2247-4550">04-2247-4550</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/drfAi2">台中市北屯區崇德二路二段22號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/drfAi2" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:台中東區店">台中東區店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-2222-1621">04-2222-1621</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/fv49SR">台中市東區台中路65號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/fv49SR" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:太平樹孝店">太平樹孝店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-2391-3186">04-2391-3186</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/Dr8hn7">台中市太平區樹孝路39-12號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/Dr8hn7" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:南投草屯店">南投草屯店</a>
+                        </th>
+                        <td>
+                            <a href="tel:049-231-8519">049-231-8519</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/ihwfhY">南投縣草屯鎮太平路二段269號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/ihwfhY" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:大雅民生店">大雅民生店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-2560-5165">04-2560-5165</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/wbb2bU">台中市大雅區民生路一段238號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/wbb2bU" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:台中三民店">台中三民店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-2225-3222">04-2225-3222</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/sgf4Pe">台中市中區台灣大道一段366號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/sgf4Pe" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:員林靜修店">員林靜修店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-8365-995">04-8365-995</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/nDKTYo">彰化縣員林市靜修路32號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/nDKTYo" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:豐原廟東店">豐原廟東店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-2523-5606">04-2523-5606</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/UrCWcJ">台中市豐原區復興路15號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/UrCWcJ" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:台中漢口店">台中漢口店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-2234-0088">04-2234-0088</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/dDq6gJ">台中市北區漢口路四段302號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/dDq6gJ" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:彰化中正店">彰化中正店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-7289-566">04-7289-566</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/MTdiBS">彰化市中正路一段448號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/MTdiBS" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:鹿港民權店">鹿港民權店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-7787-723">04-7787-723</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/5yCX2q">彰化縣鹿港鎮民權路258-1號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/5yCX2q" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:沙鹿中山店">沙鹿中山店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-2662-5466">04-2662-5466</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/DPNRSW">台中市沙鹿區中山路202-1號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/DPNRSW" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:西屯中科店">西屯中科店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-2461-3235">04-2461-3235</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/pMZ4JV">台中市西屯區西屯路三段159-8號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/pMZ4JV" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:東海遊園店">東海遊園店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-2631-9867">04-2631-9867</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/fUsT5R">台中市龍井區遊園南路222號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/fUsT5R" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:大里成功店">大里成功店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-2495-0558">04-2495-0558</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/1gu41N">台中市大里區成功二路22號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/1gu41N" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:逢甲福星店">逢甲福星店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-3707-3120">04-3707-3120</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/JHEUki">台中市西屯區福星路649號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/JHEUki" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:台中一中店">台中一中店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-3707-3127">04-3707-3127</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/YHquuw">台中市北區一中街25號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/YHquuw" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:台中工學店">台中工學店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-2260-1280">04-2260-1280</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/6K8HQT">台中市南區工學路37號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/6K8HQT" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:台中青海店">台中青海店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-2313-0368">04-2313-0368</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/sGybcP">台中市西屯區青海路一段50號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/sGybcP" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:台中向上店">台中向上店</a>
+                        </th>
+                        <td>
+                            <a href="tel:04-2301-3552">04-2301-3552</a>
+                        </td>
+                        <td class="d-none d-sm-block">
+                            <a href="https://goo.gl/GQeJWv">台中市西區向上路一段191號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/GQeJWv" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <table class="table table-striped">
+                    <tr class="table-color">
+                        <th scope="row">
+                            <a href="map:即將開幕">即將開幕</a>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="footer" role="tabpanel" aria-labelledby="footer-tab">
+                <table class="table table-striped">
+                    <tr class="table-color">
+                        <th scope="row">
+                            <a href="map:鳳山光遠店">鳳山光遠店</a>
+                        </th>
+                        <th scope="col">
+                            <a href="https://goo.gl/uVndYL">高雄市鳳山區光遠路280號</a>
+                        </th>
+                        <th scope="col">
+                            <a href="https://goo.gl/uVndYL" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:南投民族店">南投民族店</a>
+                        </th>
+                        <td>
+                            <a href="https://goo.gl/UsSXZe">南投縣南投市民族路253號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/UsSXZe" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="table-color">
+                        <th scope="row">
+                            <a href="map:新竹香山店">新竹香山店</a>
+                        </th>
+                        <td>
+                            <a href="https://goo.gl/heS7oU">新竹市香山區大庄路3號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/heS7oU" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:彰化和美店">彰化和美店</a>
+                        </th>
+                        <td>
+                            <a href="https://goo.gl/efM9HN">彰化市和美鎮仁美路216號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/efM9HN" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:小港漢民店">小港漢民店</a>
+                        </th>
+                        <td>
+                            <a href="https://goo.gl/wbT1A2">高雄市小港區漢民路626號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/wbT1A2" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:大里中興店">大里中興店</a>
+                        </th>
+                        <td>
+                            <a href="https://goo.gl/LXLUHc">台中市大里區中興路二段457號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/LXLUHc" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:台中烏日店">台中烏日店</a>
+                        </th>
+                        <td>
+                            <a href="https://goo.gl/brxy2T">台中市烏日區中山路一段427號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/brxy2T" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:台北站前店">台北站前店</a>
+                        </th>
+                        <td>
+                            <a href="https://goo.gl/wcL2xS">台北市中正區南陽街34號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/wcL2xS" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:新竹清大店">新竹清大店</a>
+                        </th>
+                        <td>
+                            <a href="https://goo.gl/eo1QQf">新竹市建功一路45-7號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/eo1QQf" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="map:台北北醫店">台北北醫店</a>
+                        </th>
+                        <td>
+                            <a href="https://goo.gl/gXDGX2">台北市信義區莊敬路320號</a>
+                        </td>
+                        <td>
+                            <a href="https://goo.gl/gXDGX2" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color:rgb(177, 50, 50);"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer_txt">© 2008 Kebuke All Rights Reserved.</div>
+    </div>
+
+    <!-- 互動視窗 -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img data-dismiss="modal" class="w-100" src="img/kebuke-menu.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <!-- 手機版漢堡條開關 -->
+    <script>
+        $(".mobile-toggle").click(function () {
+            $(this).toggleClass("open");
+            if ($(this).hasClass("open")) {
+                $(".menu").css("left", "0");
+            } else {
+                $(".menu").css("left", "-100%");
+                $(".sub-menu").slideUp(500);
+            }
+        });
+    </script>
+
+    <!-- 手機版漢堡條折疊式選單 -->
+    <script>
+        function hovercheck() {
+            $(".menu>li").hover(function () {
+                $(this).find(".sub-menu").slideDown(500);
+            }, function () {
+                $(this).find(".sub-menu").slideUp(500);
+            });
+        }
+        var window_w = $(window).width();
+        if (window_w > 576) {
+            //console.log("大於1000")
+
+            $(".menu>li").bind('mouseenter mouseleave', hovercheck);
+
+        } else {
+            $(".menu>li").unbind('mouseenter mouseleave');
+            $(".menu>li").click(function () {
+                if ($(this).hasClass("active")) {
+                    $(".sub-menu").slideUp(500);
+                    $(this).removeClass("active");
+                } else {
+                    $(".sub-menu").slideUp(500);
+                    $(".sub-menu").removeClass("active");
+                    $(this).addClass("active");
+                    $(this).find(".sub-menu").slideDown(500);
+                }
+            });
+        }
+        $(window).resize(function () {
+            function hovercheck() {
+                $(".menu>li").hover(function () {
+                    $(this).find(".sub-menu").slideDown(500);
+                }, function () {
+                    $(this).find(".sub-menu").slideUp(500);
+                });
+            }
+            var window_w = $(window).width();
+            if (window_w > 576) {
+                //console.log("大於1000")
+
+                $(".menu>li").bind('mouseenter mouseleave', hovercheck);
+
+            } else {
+                $(".menu>li").unbind('mouseenter mouseleave');
+                $(".menu>li").click(function () {
+                    $(".sub-menu").slideUp(500);
+                    $(this).find(".sub-menu").slideDown(500);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,62 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width" initial-scale="1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Kebuke 可不可熟成紅茶</title>
+    <title>可不可熟成紅茶</title>
+    <!-- web page LOGO -->
+    <link rel="shortcut icon" href="/img/1-01.png" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.0/css/swiper.min.css">
 
-    <style>
-        body{
-            margin:0;
-            overflow-x:hidden; 
-        }
-        .wrap{
-            position: relative;
-            background-color: #D8D7D1;
-            width: 100%;
-            height: 100vh;
-        }
-        .logo{
-            position: absolute;
-            top:50%;
-            left:50%;
-            transform: translate(-50%,-50%);
-            z-index: 9999;
-            opacity: 0;
-            animation: fadeIn 1s linear 2s forwards;
-        }
-        @keyframes fadeIn{
-            0%{
-                opacity: 0;
-            }
-            100%{
-                opacity: 1;
-            }
-        }
-        .stripe{
-            height:12.5vh;
-            width:100%;
-            background-color: #003C50;
-            animation: slide 2s linear forwards;
-        }
-        .stripe:nth-child(odd){
-            transform: translateX(-100%);
-        }
-        .stripe:nth-child(even){
-            transform: translateX(100%);
-        }
-        @keyframes slide{
-            to{
-                transform: translate(0)
-            }
-        }
-    </style>
 </head>
+<style>
+    body {
+        background: #D8D7D1;
+        font-family: Helvetica, Arial, sans-serif, "微軟正黑體", Heiti TC, "メイリオ";
+        font-family: "cwTeXFangSong", serif;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+
+    /* 消除連結底線 */
+
+    /* navbar */
+
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+
+    nav {
+        position: relative;
+        background-color: #003C50;
+        padding-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .logo {
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+
+    .logo img {
+        height: 90px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .menu {
+        /* 分散對齊 */
+        justify-content: space-between;
+        display: flex;
+    }
+
+    .menu>li {
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .menu>li>a {
+        font-weight: bolder;
+        font-size: 28px;
+        color: #B7925A;
+    }
+
+    .sub-menu {
+        display: none;
+        position: absolute;
+        background-color: #003C50;
+        top: 55px;
+        left: 50%;
+        /* 死都不換行 */
+        white-space: nowrap;
+        transform: translateX(-50%);
+        /* 配合position: absolute/fixed使用。數字愈大,圖層愈前面 */
+        z-index: 9999;
+    }
+
+    .sub-menu>li {
+        padding: 10px 30px;
+        text-align: center;
+    }
+
+    .sub-menu>li>a {
+        font-size: 24px;
+        color: #B7925A;
+    }
+
+    .menu>li:hover>a {
+        color: #fff;
+    }
+
+    .menu>li:nth-last-child(3)>a {
+        letter-spacing: 10px;
+        margin-left: 10px;
+    }
+
+    ul.sub-menu>li:hover {
+        background-color: #B7925A;
+    }
+
+    ul.sub-menu>li:hover a {
+        color: #fff;
+    }
+
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link.active {
+        border: none;
+        color: #B7925A;
+        background-color: transparent;
+    }
+
+    .nav-tabs {
+        border-bottom: none;
+    }
+
+    .nav-tabs .nav-link:focus,
+    .nav-tabs .nav-link:hover {
+        border: solid 1px transparent;
+        color: #fff;
+        text-shadow: 5px 5px 5px rgba(88, 77, 54, 0.5);
+    }
+
+    /* 首頁 */
+
+    #content1 {
+        width: 100%;
+        min-height: calc(100vh - 215px);
+    }
+
+    .container {
+        width: 70%;
+    }
+
+    h2 {
+        font-weight: bolder;
+        color: #B7925A;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .t-news {
+        max-width: 100%;
+        width: 400px;
+        display: block;
+        margin: 0 auto 5px;
+    }
+
+    #content1 ul li {
+        display: inline-block;
+        font-size: 24px;
+        font-weight: bolder;
+        color: #B7925A;
+        padding: 0 50px;
+        letter-spacing: 10px;
+        margin-bottom: 20px;
+    }
+
+    .box {
+        max-width: 400px;
+        text-align: center;
+        justify-content: space-between;
+    }
+
+    a {
+        color: #B7925A;
+    }
+
+    .front {
+        border-bottom: 10px;
+    }
+
+    .title {
+        font-size: 20px;
+        color: #003c50;
+        text-align: center;
+        letter-spacing: 1px;
+        margin-top: 10px;
+    }
+
+    .con1img {
+        width: 100%;
+    }
+
+    .swiper-container:hover .front {
+        box-shadow: 5px 5px 15px rgba(88, 77, 54, 0.8);
+        transition: .2s;
+    }
+
+    .footer {
+        background-color: #003c50;
+        bottom: 0;
+        width: 100%;
+        padding: 5px;
+    }
+
+    .footer_txt {
+        font-size: 10px;
+        color: #b7925a;
+        margin-left: 38%;
+        letter-spacing: 2px;
+    }
+
+
+    @media screen and (max-width: 576px) {
+        /*當頁面寬度在576px以下則會改變排列方式*/
+        
+        .logo img {
+            height: 60px;
+        }
+        .menu {
+            position: absolute;
+            display: block;
+            width: 100%;
+            top: 75px;
+            left: -100%;
+            background-color: rgba(0, 60, 80, 0.9);
+            z-index: 999;
+            text-align: center;
+            height: calc(100vh - 65px);
+            transition: 0.8s;
+        }
+        ul.menu li:hover::after {
+            opacity: 0;
+        }
+        .sub-menu {
+            display: none;
+            position: static;
+            transform: translate(0);
+        }
+        .mobile-toggle {
+            position: absolute;
+            width: 30px;
+            height: 16px;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .mobile-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #b7925a;
+        }
+        .mobile-toggle>span:nth-of-type(1) {
+            position: absolute;
+            top: 0;
+            transition: 0.8s;
+        }
+        .mobile-toggle>span:nth-of-type(2) {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: 0.8s;
+        }
+        .mobile-toggle>span:nth-of-type(3) {
+            position: absolute;
+            bottom: 0;
+            transition: 0.8s;
+        }
+        .mobile-toggle.open>span:nth-of-type(1) {
+            top: 50%;
+            transform: rotate(45deg) translateY(-50%);
+            transition: 0.8s;
+        }
+        .mobile-toggle.open>span:nth-of-type(2) {
+            opacity: 0;
+            transition: 0.8s;
+        }
+        .mobile-toggle.open>span:nth-of-type(3) {
+            top: 50%;
+            transform: rotate(-45deg) translateY(-50%);
+            transition: 0.8s;
+        }
+    }
+
+    @media (min-width: 1800px) {
+        .modal-lg {
+            max-width: 1600px;
+        }
+    }
+
+    @media (min-width: 1300px) {
+        .modal-lg {
+            max-width: 1200px;
+        }
+    }
+
+    /* 入口動畫 */
+
+    .wrap {
+        position: relative;
+        background-color: #D8D7D1;
+        width: 100%;
+        height: 100vh;
+    }
+
+    .logo-first {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        opacity: 0;
+        animation: fadeIn 1s linear 2s forwards;
+        text-align: center;
+    }
+    .logo-first img{
+        max-width: 100%;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .stripe {
+        height: 12.5vh;
+        width: 100%;
+        background-color: #003C50;
+        animation: slide 2s linear forwards;
+    }
+
+    .stripe:nth-child(odd) {
+        transform: translateX(-100%);
+    }
+
+    .stripe:nth-child(even) {
+        transform: translateX(100%);
+    }
+
+    @keyframes slide {
+        to {
+            transform: translate(0)
+        }
+    }
+</style>
+
 
 <body>
+    <!-- 入口動畫 -->
     <div class="wrap">
-        <div class="logo">
+        <div class="logo-first">
             <img src="img/logo.jpg" alt="">
         </div>
         <div class="stripe"></div>
@@ -68,6 +371,374 @@
         <div class="stripe"></div>
         <div class="stripe"></div>
     </div>
+    <nav>
+        <div class="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="logo">
+            <img src="img/kebuke08.jpg" alt="">
+        </div>
+        <div id="pc_navbar" class="container">
+            <ul class="menu">
+                <li>
+                    <a href="/index.html">最新消息</a>
+                </li>
+                <li>
+                    <a href="/about.html">品牌故事</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModalCenter">MENU</a>
+                </li>
+                <li>
+                    <a href="/store.html">門市據點</a>
+                </li>
+                <li>
+                    <a href="/contactus.html">聯絡我們</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="content1">
+        <div class="container">
+            <h2>最新消息</h2>
+            <img class="t-news" src="img/news.png" alt="">
+            <ul class="nav nav-tabs  justify-content-around" id="myTab" role="tablist">
+                <li class="nav-item ">
+                    <a class="nav-link active" id="mainAll-box" data-toggle="tab" href="#mainAll" role="tab" aria-controls="mainAll" aria-selected="true">所有公告</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="mainNew-box" data-toggle="tab" href="#mainNew" role="tab" aria-controls="mainNew" aria-selected="false">本月開幕</a>
+                </li>
 
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="mainAll" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <div class="swiper-container" id="aboutme1">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="front">
+                                            <img class="con1img" src="img/01.jpg" alt="">
+                                        </div>
+                                        <h1 class="title">可不可新春送紅包</h1>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="back" style="box-shadow: 5px 5px 15px rgba(88, 77, 54, 0.8);">
+                                            <img class="con1img" src="img/card-03.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="swiper-container" id="aboutme2">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="front">
+                                            <img class="con1img" src="img/02.jpg" alt="">
+                                        </div>
+                                        <h1 class="title">環保公告</h1>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="back" style="box-shadow: 5px 5px 15px rgba(88, 77, 54, 0.8);">
+                                            <img class="con1img" src="img/card-04.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="swiper-container" id="aboutme3">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="front">
+                                            <img class="con1img" src="img/03.jpg" alt="">
+                                        </div>
+                                        <h1 class="title">2018新年快樂</h1>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="back" style="box-shadow: 5px 5px 15px rgba(88, 77, 54, 0.8);">
+                                            <img class="con1img" src="img/card-05.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="mainNew" role="tabpanel" aria-labelledby="mainNew-tab">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <div class="swiper-container" id="aboutme4">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="front">
+                                            <img class="con1img" src="img/04.jpg" alt="">
+                                        </div>
+                                        <h1 class="title">01/22 潭子圓通南店 正式營運</h1>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="back" style="box-shadow: 5px 5px 15px rgba(88, 77, 54, 0.8);">
+                                            <img class="con1img" src="img/card-06.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="swiper-container" id="aboutme5">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="front">
+                                            <img class="con1img" src="img/05.jpg" alt="">
+                                        </div>
+                                        <h1 class="title">01/10 大甲順天店 正式營運</h1>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="back" style="box-shadow: 5px 5px 15px rgba(88, 77, 54, 0.8);">
+                                            <img class="con1img" src="img/card-07.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="swiper-container" id="aboutme6">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="front">
+                                            <img class="con1img" src="img/06.jpg" alt="">
+                                        </div>
+                                        <h1 class="title">01/07 霧峰中正店 正式營運</h1>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="back" style="box-shadow: 5px 5px 15px rgba(88, 77, 54, 0.8);">
+                                            <img class="con1img" src="img/card-08.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer_txt">© 2008 Kebuke All Rights Reserved.</div>
+    </div>
+
+
+    <!-- 互動視窗 -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img data-dismiss="modal" class="w-100" src="img/kebuke-menu.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/jquery-3.3.1.min.js "></script>
+    <!-- 使用slider,連結js內的檔案 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q "
+        crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl "
+        crossorigin="anonymous "></script>
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js "></script>
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.0/js/swiper.min.js"></script>
+
+    <!-- 手機版漢堡條開關 -->
+    <script>
+        $(".mobile-toggle").click(function () {
+            $(this).toggleClass("open");
+            if ($(this).hasClass("open")) {
+                $(".menu").css("left", "0");
+            } else {
+                $(".menu").css("left", "-100%");
+                $(".sub-menu").slideUp(500);
+            }
+        });
+    </script>
+
+    <!-- 手機版漢堡條折疊式選單 -->
+    <script>
+        function hovercheck() {
+            $(".menu>li").hover(function () {
+                $(this).find(".sub-menu").slideDown(500);
+            }, function () {
+                $(this).find(".sub-menu").slideUp(500);
+            });
+        }
+        var window_w = $(window).width();
+        if (window_w > 576) {
+            //console.log("大於1000")
+
+            $(".menu>li").bind('mouseenter mouseleave', hovercheck);
+
+        } else {
+            $(".menu>li").unbind('mouseenter mouseleave');
+            $(".menu>li").click(function () {
+                if ($(this).hasClass("active")) {
+                    $(".sub-menu").slideUp(500);
+                    $(this).removeClass("active");
+                } else {
+                    $(".sub-menu").slideUp(500);
+                    $(".sub-menu").removeClass("active");
+                    $(this).addClass("active");
+                    $(this).find(".sub-menu").slideDown(500);
+                }
+            });
+        }
+        $(window).resize(function () {
+            function hovercheck() {
+                $(".menu>li").hover(function () {
+                    $(this).find(".sub-menu").slideDown(500);
+                }, function () {
+                    $(this).find(".sub-menu").slideUp(500);
+                });
+            }
+            var window_w = $(window).width();
+            if (window_w > 576) {
+                //console.log("大於1000")
+
+                $(".menu>li").bind('mouseenter mouseleave', hovercheck);
+
+            } else {
+                $(".menu>li").unbind('mouseenter mouseleave');
+                $(".menu>li").click(function () {
+                    $(".sub-menu").slideUp(500);
+                    $(this).find(".sub-menu").slideDown(500);
+                });
+            }
+        });
+    </script>
+    <script>
+        AOS.init({
+            offset: 200,
+            duration: 600,
+            easing: 'ease-in-sine',
+            delay: 100,
+            disable: 'mobile'
+        });
+
+        // 翻轉卡片
+
+        let aboutme1 = new Swiper('#aboutme1', {
+            effect: "flip",
+            loop: true,
+            delay: 0,
+            noSwiping: true,
+            on: {
+                tap: function () {
+                    aboutme1.slideNext(400)
+                },
+            },
+        })
+        let aboutme2 = new Swiper('#aboutme2', {
+            effect: "flip",
+            loop: true,
+            delay: 0,
+            noSwiping: true,
+            on: {
+                tap: function () {
+                    aboutme2.slideNext(400)
+                },
+            },
+        })
+
+        let aboutme3 = new Swiper('#aboutme3', {
+            effect: "flip",
+            loop: true,
+            delay: 0,
+            noSwiping: true,
+            on: {
+                tap: function () {
+                    aboutme3.slideNext(400)
+                },
+            },
+        })
+
+        let aboutme4 = new Swiper('#aboutme4', {
+            effect: "flip",
+            loop: true,
+            delay: 0,
+            noSwiping: true,
+            on: {
+                tap: function () {
+                    aboutme4.slideNext(400)
+                },
+            },
+            observeParents: true,
+            observer: true,
+        })
+
+        let aboutme5 = new Swiper('#aboutme5', {
+            effect: "flip",
+            loop: true,
+            delay: 0,
+            noSwiping: true,
+            on: {
+                tap: function () {
+                    aboutme5.slideNext(400)
+                },
+            },
+            observeParents: true,
+            observer: true,
+        })
+
+        let abouotme6 = new Swiper('#aboutme6', {
+            effect: "flip",
+            loop: true,
+            delay: 0,
+            noSwiping: true,
+            on: {
+                tap: function () {
+                    aboutme6.slideNext(400)
+                },
+            },
+            observeParents: true,
+            observer: true,
+        })
+
+    </script>
+
+    <!-- 入口動畫 -->
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $(".wrap").fadeOut(1500);
+            }, 3000);
+
+            setTimeout(function () {
+                $("body").css("overflow-y", "auto");
+            }, 5500);
+        });
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            //reset slider
+            aboutme1.slideTo(1);
+            aboutme2.slideTo(1);
+            aboutme3.slideTo(1);
+            aboutme4.slideTo(1);
+            aboutme5.slideTo(1);
+            aboutme6.slideTo(1);
+            aboutme1.update();
+            aboutme2.update();
+            aboutme3.update();
+            aboutme4.update();
+            aboutme5.update();
+            aboutme6.update();
+        })
+    </script>
 </body>
+
 </html>
