@@ -167,78 +167,13 @@
             text-align: center;
         }
 
-        
-        @media screen and (max-width: 576px) {
-        /*當頁面寬度在576px以下則會改變排列方式*/
-        .logo img {
-            height: 60px;
-        }
-        .menu {
-            position: absolute;
-            display: block;
-            width: 100%;
-            top: 75px;
-            left: -100%;
-            background-color: rgba(0, 60, 80, 0.9);
-            z-index: 999;
-            text-align: center;
-            height: calc(100vh - 65px);
-            transition: 0.8s;
-        }
-        ul.menu li:hover::after {
-            opacity: 0;
-        }
-        .sub-menu {
+        .imgph {
             display: none;
-            position: static;
-            transform: translate(0);
         }
-        .mobile-toggle {
-            position: absolute;
-            width: 30px;
-            height: 16px;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
-        .mobile-toggle span {
+
+        .imgpc {
             display: block;
-            width: 100%;
-            height: 2px;
-            background-color: #b7925a;
         }
-        .mobile-toggle>span:nth-of-type(1) {
-            position: absolute;
-            top: 0;
-            transition: 0.8s;
-        }
-        .mobile-toggle>span:nth-of-type(2) {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: 0.8s;
-        }
-        .mobile-toggle>span:nth-of-type(3) {
-            position: absolute;
-            bottom: 0;
-            transition: 0.8s;
-        }
-        .mobile-toggle.open>span:nth-of-type(1) {
-            top: 50%;
-            transform: rotate(45deg) translateY(-50%);
-            transition: 0.8s;
-        }
-        .mobile-toggle.open>span:nth-of-type(2) {
-            opacity: 0;
-            transition: 0.8s;
-        }
-        .mobile-toggle.open>span:nth-of-type(3) {
-            top: 50%;
-            transform: rotate(-45deg) translateY(-50%);
-            transition: 0.8s;
-        }
-    }
 
         @media (min-width: 1800px) {
             .modal-lg {
@@ -249,6 +184,87 @@
         @media (min-width: 1300px) {
             .modal-lg {
                 max-width: 1200px;
+            }
+        }
+
+
+        @media screen and (max-width: 576px) {
+            /*當頁面寬度在576px以下則會改變排列方式*/
+            .logo img {
+                height: 60px;
+            }
+            .menu {
+                position: absolute;
+                display: block;
+                width: 100%;
+                top: 75px;
+                left: -100%;
+                background-color: rgba(0, 60, 80, 0.9);
+                z-index: 999;
+                text-align: center;
+                height: calc(100vh - 65px);
+                transition: 0.8s;
+            }
+            ul.menu li:hover::after {
+                opacity: 0;
+            }
+            .sub-menu {
+                display: none;
+                position: static;
+                transform: translate(0);
+            }
+            .mobile-toggle {
+                position: absolute;
+                width: 30px;
+                height: 16px;
+                left: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
+            }
+            .mobile-toggle span {
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: #b7925a;
+            }
+            .mobile-toggle>span:nth-of-type(1) {
+                position: absolute;
+                top: 0;
+                transition: 0.8s;
+            }
+            .mobile-toggle>span:nth-of-type(2) {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                transition: 0.8s;
+            }
+            .mobile-toggle>span:nth-of-type(3) {
+                position: absolute;
+                bottom: 0;
+                transition: 0.8s;
+            }
+            .mobile-toggle.open>span:nth-of-type(1) {
+                top: 50%;
+                transform: rotate(45deg) translateY(-50%);
+                transition: 0.8s;
+            }
+            .mobile-toggle.open>span:nth-of-type(2) {
+                opacity: 0;
+                transition: 0.8s;
+            }
+            .mobile-toggle.open>span:nth-of-type(3) {
+                top: 50%;
+                transform: rotate(-45deg) translateY(-50%);
+                transition: 0.8s;
+            }
+
+            .imgpc {
+
+                display: none;
+            }
+            .imgph {
+                display: block;
             }
         }
     </style>
@@ -895,7 +911,8 @@
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <img data-dismiss="modal" class="w-100" src="img/kebuke-menu.jpg" alt="">
+                    <img data-dismiss="modal" class="w-100 imgpc" src="img/kebuke-menu.jpg" alt="">
+                    <img data-dismiss="modal" class="w-100 imgph" src="img/menu.jpg" alt="">
                 </div>
             </div>
         </div>

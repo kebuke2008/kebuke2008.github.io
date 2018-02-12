@@ -31,113 +31,113 @@
         }
 
 
-    /* navbar */
+        /* navbar */
 
-    a,
-    a:hover,
-    a:focus,
-    a:active {
-        text-decoration: none;
-    }
+        a,
+        a:hover,
+        a:focus,
+        a:active {
+            text-decoration: none;
+        }
 
-    ul {
-        list-style: none;
-        margin-bottom: 0;
-        padding-left: 0;
-    }
+        ul {
+            list-style: none;
+            margin-bottom: 0;
+            padding-left: 0;
+        }
 
-    nav {
-        position: relative;
-        background-color: #003C50;
-        padding-top: 15px;
-        margin-bottom: 15px;
-    }
+        nav {
+            position: relative;
+            background-color: #003C50;
+            padding-top: 15px;
+            margin-bottom: 15px;
+        }
 
-    .logo {
-        margin: 0 auto;
-        margin-bottom: 10px;
-    }
+        .logo {
+            margin: 0 auto;
+            margin-bottom: 10px;
+        }
 
-    .logo img {
-        height: 90px;
-        display: block;
-        margin: 0 auto;
-    }
+        .logo img {
+            height: 90px;
+            display: block;
+            margin: 0 auto;
+        }
 
-    .menu {
-        /* 分散對齊 */
-        justify-content: space-between;
-        display: flex;
-    }
+        .menu {
+            /* 分散對齊 */
+            justify-content: space-between;
+            display: flex;
+        }
 
-    .menu>li {
-        position: relative;
-        padding-bottom: 15px;
-    }
+        .menu>li {
+            position: relative;
+            padding-bottom: 15px;
+        }
 
-    .menu>li>a {
-        font-weight: bolder;
-        font-size: 28px;
-        color: #B7925A;
-    }
+        .menu>li>a {
+            font-weight: bolder;
+            font-size: 28px;
+            color: #B7925A;
+        }
 
-    .sub-menu {
-        display: none;
-        position: absolute;
-        background-color: #003C50;
-        top: 55px;
-        left: 50%;
-        /* 死都不換行 */
-        white-space: nowrap;
-        transform: translateX(-50%);
-        /* 配合position: absolute/fixed使用。數字愈大,圖層愈前面 */
-        z-index: 9999;
-    }
+        .sub-menu {
+            display: none;
+            position: absolute;
+            background-color: #003C50;
+            top: 55px;
+            left: 50%;
+            /* 死都不換行 */
+            white-space: nowrap;
+            transform: translateX(-50%);
+            /* 配合position: absolute/fixed使用。數字愈大,圖層愈前面 */
+            z-index: 9999;
+        }
 
-    .sub-menu>li {
-        padding: 10px 30px;
-        text-align: center;
-    }
+        .sub-menu>li {
+            padding: 10px 30px;
+            text-align: center;
+        }
 
-    .sub-menu>li>a {
-        font-size: 24px;
-        color: #B7925A;
-    }
+        .sub-menu>li>a {
+            font-size: 24px;
+            color: #B7925A;
+        }
 
-    .menu>li:hover>a {
-        color: #fff;
-    }
+        .menu>li:hover>a {
+            color: #fff;
+        }
 
-    .menu>li:nth-last-child(3)>a {
-        letter-spacing: 10px;
-        margin-left: 10px;
-    }
+        .menu>li:nth-last-child(3)>a {
+            letter-spacing: 10px;
+            margin-left: 10px;
+        }
 
-    ul.sub-menu>li:hover {
-        background-color: #B7925A;
-    }
+        ul.sub-menu>li:hover {
+            background-color: #B7925A;
+        }
 
-    ul.sub-menu>li:hover a {
-        color: #fff;
-    }
+        ul.sub-menu>li:hover a {
+            color: #fff;
+        }
 
-    .nav-tabs .nav-item.show .nav-link,
-    .nav-tabs .nav-link.active {
-        border: none;
-        color: #B7925A;
-        background-color: transparent;
-    }
+        .nav-tabs .nav-item.show .nav-link,
+        .nav-tabs .nav-link.active {
+            border: none;
+            color: #B7925A;
+            background-color: transparent;
+        }
 
-    .nav-tabs {
-        border-bottom: none;
-    }
+        .nav-tabs {
+            border-bottom: none;
+        }
 
-    .nav-tabs .nav-link:focus,
-    .nav-tabs .nav-link:hover {
-        border: solid 1px transparent;
-        color: #fff;
-        text-shadow: 5px 5px 5px rgba(88, 77, 54, 0.5);
-    }
+        .nav-tabs .nav-link:focus,
+        .nav-tabs .nav-link:hover {
+            border: solid 1px transparent;
+            color: #fff;
+            text-shadow: 5px 5px 5px rgba(88, 77, 54, 0.5);
+        }
 
 
         .img-fluid {
@@ -159,81 +159,17 @@
             text-align: center;
         }
 
+        .imgph {
+            display: none;
+        }
+
+        .imgpc {
+            display: block;
+        }
+
         .content-About {
             margin-top: 25px;
         }
-
-    @media screen and (max-width: 576px) {
-        /*當頁面寬度在576px以下則會改變排列方式*/
-        .logo img {
-            height: 60px;
-        }
-        .menu {
-            position: absolute;
-            display: block;
-            width: 100%;
-            top: 75px;
-            left: -100%;
-            background-color: rgba(0, 60, 80, 0.9);
-            z-index: 999;
-            text-align: center;
-            height: calc(100vh - 65px);
-            transition: 0.8s;
-        }
-        ul.menu li:hover::after {
-            opacity: 0;
-        }
-        .sub-menu {
-            display: none;
-            position: static;
-            transform: translate(0);
-        }
-        .mobile-toggle {
-            position: absolute;
-            width: 30px;
-            height: 16px;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
-        .mobile-toggle span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: #b7925a;
-        }
-        .mobile-toggle>span:nth-of-type(1) {
-            position: absolute;
-            top: 0;
-            transition: 0.8s;
-        }
-        .mobile-toggle>span:nth-of-type(2) {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: 0.8s;
-        }
-        .mobile-toggle>span:nth-of-type(3) {
-            position: absolute;
-            bottom: 0;
-            transition: 0.8s;
-        }
-        .mobile-toggle.open>span:nth-of-type(1) {
-            top: 50%;
-            transform: rotate(45deg) translateY(-50%);
-            transition: 0.8s;
-        }
-        .mobile-toggle.open>span:nth-of-type(2) {
-            opacity: 0;
-            transition: 0.8s;
-        }
-        .mobile-toggle.open>span:nth-of-type(3) {
-            top: 50%;
-            transform: rotate(-45deg) translateY(-50%);
-            transition: 0.8s;
-        }
-    }
 
         @media (min-width: 1800px) {
             .modal-lg {
@@ -244,6 +180,87 @@
         @media (min-width: 1300px) {
             .modal-lg {
                 max-width: 1200px;
+            }
+        }
+
+
+        @media screen and (max-width: 576px) {
+            /*當頁面寬度在576px以下則會改變排列方式*/
+            .logo img {
+                height: 60px;
+            }
+            .menu {
+                position: absolute;
+                display: block;
+                width: 100%;
+                top: 75px;
+                left: -100%;
+                background-color: rgba(0, 60, 80, 0.9);
+                z-index: 999;
+                text-align: center;
+                height: calc(100vh - 65px);
+                transition: 0.8s;
+            }
+            ul.menu li:hover::after {
+                opacity: 0;
+            }
+            .sub-menu {
+                display: none;
+                position: static;
+                transform: translate(0);
+            }
+            .mobile-toggle {
+                position: absolute;
+                width: 30px;
+                height: 16px;
+                left: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
+            }
+            .mobile-toggle span {
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: #b7925a;
+            }
+            .mobile-toggle>span:nth-of-type(1) {
+                position: absolute;
+                top: 0;
+                transition: 0.8s;
+            }
+            .mobile-toggle>span:nth-of-type(2) {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                transition: 0.8s;
+            }
+            .mobile-toggle>span:nth-of-type(3) {
+                position: absolute;
+                bottom: 0;
+                transition: 0.8s;
+            }
+            .mobile-toggle.open>span:nth-of-type(1) {
+                top: 50%;
+                transform: rotate(45deg) translateY(-50%);
+                transition: 0.8s;
+            }
+            .mobile-toggle.open>span:nth-of-type(2) {
+                opacity: 0;
+                transition: 0.8s;
+            }
+            .mobile-toggle.open>span:nth-of-type(3) {
+                top: 50%;
+                transform: rotate(-45deg) translateY(-50%);
+                transition: 0.8s;
+            }
+
+            .imgpc {
+
+                display: none;
+            }
+            .imgph {
+                display: block;
             }
         }
     </style>
@@ -304,17 +321,17 @@
     </div>
 
 
-   <!-- 互動視窗 -->
-   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <img data-dismiss="modal" class="w-100 imgpc" src="img/kebuke-menu.jpg" alt="">
-                <img data-dismiss="modal" class="w-100 imgph" src="img/menu.jpg" alt="">
+    <!-- 互動視窗 -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img data-dismiss="modal" class="w-100 imgpc" src="img/kebuke-menu.jpg" alt="">
+                    <img data-dismiss="modal" class="w-100 imgph" src="img/menu.jpg" alt="">
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -337,21 +354,49 @@
             $(this).find(".sub-menu").slideUp(500);
         });
     </script>
-     <!-- 手機版漢堡條開關 -->
-     <script>
-            $(".mobile-toggle").click(function () {
-                $(this).toggleClass("open");
-                if ($(this).hasClass("open")) {
-                    $(".menu").css("left", "0");
-                } else {
-                    $(".menu").css("left", "-100%");
+    <!-- 手機版漢堡條開關 -->
+    <script>
+        $(".mobile-toggle").click(function () {
+            $(this).toggleClass("open");
+            if ($(this).hasClass("open")) {
+                $(".menu").css("left", "0");
+            } else {
+                $(".menu").css("left", "-100%");
+                $(".sub-menu").slideUp(500);
+            }
+        });
+    </script>
+
+    <!-- 手機版漢堡條折疊式選單 -->
+    <script>
+        function hovercheck() {
+            $(".menu>li").hover(function () {
+                $(this).find(".sub-menu").slideDown(500);
+            }, function () {
+                $(this).find(".sub-menu").slideUp(500);
+            });
+        }
+        var window_w = $(window).width();
+        if (window_w > 576) {
+            //console.log("大於1000")
+
+            $(".menu>li").bind('mouseenter mouseleave', hovercheck);
+
+        } else {
+            $(".menu>li").unbind('mouseenter mouseleave');
+            $(".menu>li").click(function () {
+                if ($(this).hasClass("active")) {
                     $(".sub-menu").slideUp(500);
+                    $(this).removeClass("active");
+                } else {
+                    $(".sub-menu").slideUp(500);
+                    $(".sub-menu").removeClass("active");
+                    $(this).addClass("active");
+                    $(this).find(".sub-menu").slideDown(500);
                 }
             });
-        </script>
-    
-        <!-- 手機版漢堡條折疊式選單 -->
-        <script>
+        }
+        $(window).resize(function () {
             function hovercheck() {
                 $(".menu>li").hover(function () {
                     $(this).find(".sub-menu").slideDown(500);
@@ -362,46 +407,18 @@
             var window_w = $(window).width();
             if (window_w > 576) {
                 //console.log("大於1000")
-    
+
                 $(".menu>li").bind('mouseenter mouseleave', hovercheck);
-    
+
             } else {
                 $(".menu>li").unbind('mouseenter mouseleave');
                 $(".menu>li").click(function () {
-                    if ($(this).hasClass("active")) {
-                        $(".sub-menu").slideUp(500);
-                        $(this).removeClass("active");
-                    } else {
-                        $(".sub-menu").slideUp(500);
-                        $(".sub-menu").removeClass("active");
-                        $(this).addClass("active");
-                        $(this).find(".sub-menu").slideDown(500);
-                    }
+                    $(".sub-menu").slideUp(500);
+                    $(this).find(".sub-menu").slideDown(500);
                 });
             }
-            $(window).resize(function () {
-                function hovercheck() {
-                    $(".menu>li").hover(function () {
-                        $(this).find(".sub-menu").slideDown(500);
-                    }, function () {
-                        $(this).find(".sub-menu").slideUp(500);
-                    });
-                }
-                var window_w = $(window).width();
-                if (window_w > 576) {
-                    //console.log("大於1000")
-    
-                    $(".menu>li").bind('mouseenter mouseleave', hovercheck);
-    
-                } else {
-                    $(".menu>li").unbind('mouseenter mouseleave');
-                    $(".menu>li").click(function () {
-                        $(".sub-menu").slideUp(500);
-                        $(this).find(".sub-menu").slideDown(500);
-                    });
-                }
-            });
-        </script>
+        });
+    </script>
 
 </body>
 
