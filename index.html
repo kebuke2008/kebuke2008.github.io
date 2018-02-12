@@ -210,14 +210,32 @@
     .footer_txt {
         font-size: 10px;
         color: #b7925a;
-        margin-left: 38%;
         letter-spacing: 2px;
+        text-align: center;
     }
 
+    .imgph {
+        display: none;
+    }
+
+    .imgpc {
+        display: block;
+    }
+
+    @media (min-width: 1800px) {
+        .modal-lg {
+            max-width: 1600px;
+        }
+    }
+
+    @media (min-width: 1300px) {
+        .modal-lg {
+            max-width: 1200px;
+        }
+    }
 
     @media screen and (max-width: 576px) {
         /*當頁面寬度在576px以下則會改變排列方式*/
-        
         .logo img {
             height: 60px;
         }
@@ -286,17 +304,13 @@
             transform: rotate(-45deg) translateY(-50%);
             transition: 0.8s;
         }
-    }
 
-    @media (min-width: 1800px) {
-        .modal-lg {
-            max-width: 1600px;
+        .imgpc {
+
+            display: none;
         }
-    }
-
-    @media (min-width: 1300px) {
-        .modal-lg {
-            max-width: 1200px;
+        .imgph {
+            display: block;
         }
     }
 
@@ -320,7 +334,8 @@
         animation: fadeIn 1s linear 2s forwards;
         text-align: center;
     }
-    .logo-first img{
+
+    .logo-first img {
         max-width: 100%;
     }
 
@@ -366,7 +381,7 @@
         <div class="stripe"></div>
         <div class="stripe"></div>
         <div class="stripe"></div>
-        <div class="stripe"></div>
+        <div class="stripe"></div>  
         <div class="stripe"></div>
         <div class="stripe"></div>
         <div class="stripe"></div>
@@ -539,7 +554,8 @@
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <img data-dismiss="modal" class="w-100" src="img/kebuke-menu.jpg" alt="">
+                    <img data-dismiss="modal" class="w-100 imgpc" src="img/kebuke-menu.jpg" alt="">
+                    <img data-dismiss="modal" class="w-100 imgph" src="img/menu.jpg" alt="">
                 </div>
             </div>
         </div>
